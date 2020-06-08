@@ -1,0 +1,64 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Sep 18 16:58:52 2019
+
+@author: Franco
+"""
+
+#Ruleta Rusa
+import random
+import pygame
+import winsound
+import time
+
+pygame.mixer.init()
+pygame.mixer.music.load("Musica de fondo dramatica.mp3")
+pygame.mixer.music.play()
+
+dinero = 10000
+suerte = ["Vida","Vida","Vida","Muerte","Vida","Vida"]
+
+while True:
+    opcion = input("Presiona Z para apretar el gatillo \nPresiona X para abandonar (pierdes todo tu dinero pero mejor que perder la vida) \n")
+    
+    if(opcion == "X" or opcion == "x"):
+        dinero = 0
+        print ("Dinero: " + str(dinero))
+        break
+    
+    if(opcion == "Z" or opcion == "z"):
+        destino = random.choice(suerte)
+        print ("Tu turno")
+        if (destino == "Muerte"):
+            pygame.mixer.music.load("Disparo.mp3")
+            pygame.mixer.music.play()
+            time.sleep(2)
+            print ("Has muerto")
+            winsound.PlaySound("Muerte.wav",winsound.SND_ASYNC)
+            break
+        else:
+            time.sleep(2)
+            print ("Sobreviviste, por ahora \n")
+
+        
+        destino = random.choice(suerte)
+        print ("Turno del contricante")
+        if (destino == "Muerte"):
+            pygame.mixer.music.load("Disparo.mp3")
+            pygame.mixer.music.play()
+            time.sleep(2)
+            print ("Solo tuviste suerte. A que no te animas a jugar de nuevo")
+            dinero = dinero + 10000
+            print ("Dinero: " + str(dinero))
+            break
+        else:
+            time.sleep(2)
+            print ("Sigue vivo. Te toca enfrentar al destino de vuelta \n")
+        
+    else:
+        print("Esa no es una opción valida \n")
+
+
+
+delay = input("Presiona ENTER para terminar")
+pygame.mixer.music.stop()

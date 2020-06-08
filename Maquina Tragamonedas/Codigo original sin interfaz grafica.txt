@@ -1,0 +1,94 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Sep 17 17:45:58 2019
+
+@author: Franco
+"""
+
+#Maquina tragamonedas
+import random
+import pygame
+import winsound
+pygame.mixer.init()
+
+dinero = 100
+elementos_maquina = ["Frutilla","Limon","Estrella","Campana","Moneda de oro","7"]
+
+#Frutilla = Cantidad de monedas x 2
+#Limon = Cantidad de monedas x 3
+#Estrella = Cantidad de monedas x 5
+#Campana = Cantidad de monedas x 10
+#Moneda de oro = Cantidad de monedas x 20
+#7 = Cantidad de monedas x 77
+
+pygame.mixer.music.load("Musica de fondo.mp3")
+pygame.mixer.music.play()
+
+while True:
+    
+    print ("Dinero: " + str(dinero))
+    opcion = input(" 1) Una moneda \n 2) Dos monedas \n 3) Tres monedas \n 4) Cinco monedas \n 5) Diez monedas \n 6) Veinticinco monedas \n 7) Cincuenta monedas \n 8) Cien monedas \n 0) Salir \n")
+    while (int(opcion) != 1  and int(opcion) != 2 and int(opcion) != 3 and int(opcion) != 4 and int(opcion) != 5 and int(opcion) != 6 and int(opcion) != 7 and int(opcion) != 8 and int(opcion) != 0):
+        print ("Opción no valida")
+        opcion = input()
+    
+    
+    if(int(opcion) == 0):
+        break
+    
+    #Chequeo para saber si tiene suficiente dinero para apostar esa cantidad
+    while True:
+        lista_de_opciones=[0, 1, 2, 3, 5, 10, 25, 50, 100]
+        aux_dinero = dinero - lista_de_opciones[int(opcion)]
+        
+        while (aux_dinero < 0):
+            print ("No tienes suficiente dinero. Realiza otro tipo de apuesta o vuelve cuando tengas más dinero")
+            aux_dinero = dinero
+            opcionaux = opcion
+            opcion = input()
+            
+            while (opcion == opcionaux):
+                print ("Ya te dijimos que selecciones otra opción")
+                opcionaux = opcion
+                opcion = input()
+            
+            aux_dinero = dinero - lista_de_opciones[int(opcion)]
+          
+        break
+                    
+    if(int(opcion) == 0):
+        break
+    
+    winsound.PlaySound("Ingreso de ficha.wav",winsound.SND_ASYNC)
+    
+    #En caso de que si se disponga del dinero suficiente se realiza la apuesta
+    cantidad_apuesta = lista_de_opciones[int(opcion)]
+    dinero = dinero - lista_de_opciones[int(opcion)]
+    
+    
+    variable_1 = random.choice(elementos_maquina)
+    variable_2 = random.choice(elementos_maquina)
+    variable_3 = random.choice(elementos_maquina)
+        
+
+    if (variable_1 == variable_2 and variable_2 == variable_3):
+        print("Felicitaciones")
+        winsound.PlaySound("Premio.wav",winsound.SND_ASYNC)
+        if(variable_1 == "Frutilla"):
+            dinero = dinero + (cantidad_apuesta * 2)
+        if(variable_1 == "Limon"):
+            dinero = dinero + (cantidad_apuesta * 3)
+        if(variable_1 == "Estrella"):
+            dinero = dinero + (cantidad_apuesta * 5)
+        if(variable_1 == "Campana"):
+            dinero = dinero + (cantidad_apuesta * 10)
+        if(variable_1 == "Moneda de oro"):
+            dinero = dinero + (cantidad_apuesta * 20)
+        if(variable_1 == "7"):
+            dinero = dinero + (cantidad_apuesta * 77)
+    else:
+            print("Intentalo de nuevo")
+
+    
+delay = input("Presiona ENTER para terminar")
+pygame.mixer.music.stop()
