@@ -62,7 +62,8 @@ while True:                   #Un while infinito para que no se cierre la ventan
         input()
         import Maquina_tragamonedas.py
 
-      elif evento.key == K_2: pass
+      #elif evento.key == K_2: commands.getoutput('Proyectos con Git/TP_Final_Concurrente/Ruleta Casino.py')
+      elif evento.key == K_2: os.sistem('Proyectos con Git/TP_Final_Concurrente/Ruleta Casino.py')
       elif evento.key == K_3: pass
       elif evento.key == K_4: pass
       elif evento.key == K_5: pass
