@@ -13,8 +13,8 @@ pygame.mixer.init()
 
 dinero = 100
 
-pygame.mixer.music.load("Musica de fondo.mp3")
-pygame.mixer.music.play()
+#pygame.mixer.music.load("Musica de fondo.mp3")
+#pygame.mixer.music.play()
 
 while True:
     
