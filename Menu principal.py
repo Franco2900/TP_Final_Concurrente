@@ -2,6 +2,9 @@ import sys
 import os
 import inspect
 import pygame
+import subprocess 
+
+################################################################################################################
 
 from pygame.locals import *  #Para inicializar todos los modulos que vienen con esa libreria
 pygame.init()
@@ -14,6 +17,8 @@ def cambiar_volumen(cambio):
 def end():
   pygame.quit()             #Que se cierre la ventana
   sys.exit()
+
+################################################################################################################
 
 objeto_ventana = pygame.display.set_mode((800,600))  #Tamaño de la ventana (Ancho/Alto)
 pygame.display.set_caption("Hola soy una ventana")   #Titulo de la pantalla
@@ -30,8 +35,14 @@ Texto_2 = miFuente.render("2) Veintiuno", 0, color_rojo)
 Texto_3 = miFuente.render("3) Ruleta", 0, color_rojo)
 Texto_4 = miFuente.render("4) Domino", 0, color_rojo)
 Texto_5 = miFuente.render("5) Ruleta Rusa", 0, color_rojo)
-Texto_6 = miFuente.render("R) Reproductor", 0, color_rojo)
+Texto_6 = miFuente.render("6) Reproductor", 0, color_rojo)
 Texto_7 = miFuente.render("Dinero: {}".format(dinero), 0, color_rojo)
+
+directorio_actual = os.getcwd()
+print(directorio_actual)
+directorio_nuevo = (directorio_actual + '\Ruleta Casino\Ruleta Casino.py')
+print(directorio_nuevo)
+################################################################################################################
 
 while True:                   #Un while infinito para que no se cierre la ventana
   objeto_ventana.fill(color_negro)
@@ -63,10 +74,10 @@ while True:                   #Un while infinito para que no se cierre la ventan
         import Maquina_tragamonedas.py
 
       #elif evento.key == K_2: commands.getoutput('Proyectos con Git/TP_Final_Concurrente/Ruleta Casino.py')
-      elif evento.key == K_2: os.sistem('Proyectos con Git/TP_Final_Concurrente/Ruleta Casino.py')
+      elif evento.key == K_2: subprocess.call('C:\Users\Franco\Desktop\Proyectos con Git\TP_Final_Concurrente\Ruleta Casino\Ruleta Casino.py', shell=True)
       elif evento.key == K_3: pass
       elif evento.key == K_4: pass
       elif evento.key == K_5: pass
-      elif evento.key == K_6: pass
+      elif evento.key == K_6: subprocess.call('Musica (Mel version).py', shell=True)
 
 pygame.mixer.music.stop()

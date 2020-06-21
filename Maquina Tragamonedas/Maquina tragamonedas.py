@@ -45,8 +45,8 @@ elementos_maquina = ["Frutilla","Limon","Estrella","Campana","Moneda de oro","7"
 #Moneda de oro = Cantidad de monedas x 20
 #7 = Cantidad de monedas x 77
 
-pygame.mixer.music.load("Musica de fondo.mp3")
-pygame.mixer.music.play()
+#pygame.mixer.music.load("Musica de fondo.mp3")
+#pygame.mixer.music.play()
 
 color_negro = (0,0,0)
 color_rojo = (255,0,0)
