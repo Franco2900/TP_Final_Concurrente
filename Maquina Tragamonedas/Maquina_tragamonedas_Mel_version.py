@@ -13,8 +13,8 @@ import time
 pygame.mixer.init()
 
 import sys	#Para cerrar las ventanas / Esta libreria ya viene por defecto
-import pygame
 import os
+import runpy
 
 from pygame.locals import *	#Para inicializar todos los modulos que vienen con esa libreria
 pygame.init() 
@@ -169,6 +169,6 @@ while playgameflag:
 	pygame.display.update()
 	pygame.event.clear()
 
-if __name__ != "__main__": 
-	os.chdir("..") #Volver el directorio uno para atras, por ejemplo de C:\Archivos de programas a C:\
-	import Menu_Principal.py
+if __name__ != "__main__":
+    os.chdir("..") #Cambiar directorio actual, necesario para poder encontrar el archivo del juego
+    runpy.run_path("Menu_Principal.py")
